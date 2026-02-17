@@ -31,9 +31,10 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
                     >
                         <img
                             src={company.logo}
-                            alt={company.name}
+                            alt=""
                             className="h-12 object-contain grayscale hover:grayscale-0 transition-all duration-300"
                             style={{ maxWidth: 120 }}
+                            aria-hidden="true"
                         />
                     </div>
                 ))}
@@ -55,9 +56,10 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
                     >
                         <img
                             src={company.logo}
-                            alt={company.name}
+                            alt=""
                             className="h-12 object-contain grayscale hover:grayscale-0 transition-all duration-300"
                             style={{ maxWidth: 120 }}
+                            aria-hidden="true"
                         />
                     </div>
                 ))}
@@ -69,11 +71,6 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
 export default function LogoMarquee() {
     return (
         <section className="relative border-y border-border bg-card/50 py-8">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <p className="mb-6 text-center text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground">
-                    TRUSTED BY INDUSTRY LEADERS
-                </p>
-            </div>
             <MarqueeRow />
         </section>
     )

@@ -24,13 +24,13 @@ export default function ProductLibraryPage() {
                         className="text-center"
                     >
                         <div className="inline-flex items-center gap-2 bg-black/5 border-[2px] border-black px-4 py-1.5 mb-8">
-                            <Box className="h-4 w-4 text-black" />
+                            <Box className="h-4 w-4 text-black" aria-hidden="true" />
                             <span className="text-xs font-bold uppercase tracking-[0.2em] text-black">PRODUCT LIBRARY</span>
                         </div>
                         <h1 className="text-5xl font-extrabold uppercase tracking-tight sm:text-6xl md:text-display-xl">
                             <span className="text-foreground">PRE-BUILT </span>
-                            <span className="text-black/40">AI </span>
-                            <span className="text-foreground">ASSETS</span>
+                            <span className="text-black/30 italic font-black">AI</span>
+                            <span className="text-foreground"> ASSETS</span>
                         </h1>
                         <p className="mt-8 max-w-2xl mx-auto text-lg text-muted-foreground">
                             Accelerate your time-to-market with our library of production-ready GenAI modules,
@@ -46,7 +46,7 @@ export default function ProductLibraryPage() {
                     <div className="brutal-card bg-white p-12 max-w-3xl mx-auto">
                         <div className="flex justify-center mb-8">
                             <div className="h-20 w-20 rounded-full bg-black flex items-center justify-center text-white">
-                                <Sparkles className="h-10 w-10 animate-pulse" />
+                                <Sparkles className="h-10 w-10 animate-pulse" aria-hidden="true" />
                             </div>
                         </div>
                         <h2 className="text-3xl font-black uppercase mb-6">Coming Soon</h2>
@@ -56,8 +56,8 @@ export default function ProductLibraryPage() {
                         </p>
                         <div className="flex justify-center">
                             <Link href="/contact">
-                                <Button size="xl" className="brutal-btn bg-black text-white gap-3">
-                                    Get Early Access <ArrowRight className="h-5 w-5" />
+                                <Button size="xl" className="w-full brutal-btn bg-black text-white gap-3 font-black uppercase tracking-widest text-xs h-16 rounded-none">
+                                    BOOK A STRATEGIC CONSULTATION <ArrowRight className="h-5 w-5" aria-hidden="true" />
                                 </Button>
                             </Link>
                         </div>
@@ -81,7 +81,7 @@ export default function ProductLibraryPage() {
                                 transition={{ delay: i * 0.1 }}
                                 className="clay-card p-8 border-black/5"
                             >
-                                <cat.icon className="h-10 w-10 mb-6 text-black" />
+                                <cat.icon className="h-10 w-10 mb-6 text-black" aria-hidden="true" />
                                 <h3 className="text-lg font-bold uppercase mb-3">{cat.title}</h3>
                                 <p className="text-sm text-muted-foreground">{cat.desc}</p>
                             </motion.div>

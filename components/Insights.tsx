@@ -35,7 +35,7 @@ export default function Insights() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="relative py-24 bg-card/30">
+    <section className="relative py-24 bg-card/30 scroll-mt-24" id="insights">
       <div className="noise-overlay" />
       <div ref={ref} className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -57,7 +57,7 @@ export default function Insights() {
             href="/insights"
             className="hidden sm:flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-black hover:text-black/70 transition-colors"
           >
-            VIEW ALL <ArrowUpRight className="h-4 w-4" />
+            VIEW ALL <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </motion.div>
 
@@ -91,7 +91,7 @@ export default function Insights() {
                 </p>
                 <div className="flex items-center gap-4 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1">
-                    <Clock className="h-3 w-3" /> {article.readTime}
+                    <Clock className="h-3 w-3" aria-hidden="true" /> {article.readTime}
                   </span>
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function Insights() {
             href="/insights"
             className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-black"
           >
-            VIEW ALL INSIGHTS <ArrowUpRight className="h-4 w-4" />
+            VIEW ALL INSIGHTS <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </div>

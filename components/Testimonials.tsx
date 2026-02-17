@@ -2,36 +2,29 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Star, Quote } from 'lucide-react'
+import { ArrowRight, BarChart3, Target, Zap } from 'lucide-react'
 
-const testimonials = [
+const caseStudies = [
   {
-    name: 'Sarah Chen',
-    role: 'CTO, FinScale',
-    quote: 'Optylize took us from a vague AI roadmap to a production GenAI system in 8 weeks. Their team felt like an extension of ours.',
-    avatar: 'SC',
-    color: 'bg-black/5',
+    industry: 'Ecommerce',
+    challenge: 'Low operational efficiency and fragmented data systems.',
+    approach: 'Implemented structured AI strategy, KPI mapping, predictive analytics layer.',
+    impact: '40% ROI improvement and 2x faster decision cycles.',
+    icon: Target,
   },
   {
-    name: 'Marcus Williams',
-    role: 'VP Engineering, MedCore',
-    quote: 'The HIPAA-compliant pipeline they built handles 10x our initial projections. Truly enterprise-grade work.',
-    avatar: 'MW',
-    color: 'bg-black/10',
+    industry: 'Manufacturing & Metals',
+    challenge: 'Manual forecasting and inventory misalignment.',
+    approach: 'Built AI-driven demand prediction system integrated with ERP.',
+    impact: 'Reduced waste by 28%, improved planning accuracy by 35%.',
+    icon: Zap,
   },
   {
-    name: 'Elena Rodriguez',
-    role: 'CEO, RetailEdge',
-    quote: 'Our recommendation engine now drives 34% more conversions. Optylize delivered exactly what they promised — and more.',
-    avatar: 'ER',
-    color: 'bg-black/5',
-  },
-  {
-    name: 'David Park',
-    role: 'Head of Data, LogiFlow',
-    quote: 'Finally, a consulting firm that ships code, not slide decks. The predictive routing model cut our costs by 28%.',
-    avatar: 'DP',
-    color: 'bg-black/10',
+    industry: 'SaaS & Services',
+    challenge: 'Poor customer segmentation and conversion leakages.',
+    approach: 'Deployed agentic analytics workflows and automation systems.',
+    impact: 'Increased retention by 22% and reduced churn within 6 weeks.',
+    icon: BarChart3,
   },
 ]
 
@@ -40,8 +33,8 @@ export default function Testimonials() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="relative py-24 bg-background overflow-hidden">
-      <div className="noise-overlay" />
+    <section className="relative py-24 bg-[#FBFBFC] overflow-hidden scroll-mt-24" id="case-studies">
+      <div className="noise-overlay opacity-[0.02]" />
       <div ref={ref} className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,43 +42,51 @@ export default function Testimonials() {
           transition={{ duration: 0.5 }}
           className="mb-16 text-center"
         >
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-black/40">
-            CLIENT VOICES
+          <p className="mb-4 text-xs font-black uppercase tracking-[0.3em] text-black/40">
+            CASE STUDIES
           </p>
-          <h2 className="text-3xl font-extrabold uppercase tracking-tight sm:text-4xl md:text-display-md">
-            <span className="text-foreground">WHAT OUR </span>
-            <span className="text-black/60">PARTNERS </span>
-            <span className="text-foreground">SAY</span>
+          <h2 className="text-4xl font-[950] uppercase tracking-tight sm:text-5xl md:text-6xl">
+            STRATEGIC EXECUTION. <br />
+            <span className="text-black/30 italic font-black">TANGIBLE IMPACT.</span>
           </h2>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2">
-          {testimonials.map((t, i) => (
+        <div className="grid gap-8 lg:grid-cols-3">
+          {caseStudies.map((study, i) => (
             <motion.div
-              key={t.name}
-              initial={{ opacity: 0, y: 40, rotate: i % 2 === 0 ? -1 : 1 }}
-              animate={isInView ? { opacity: 1, y: 0, rotate: i % 2 === 0 ? -0.5 : 0.5 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
-              whileHover={{ rotate: 0, scale: 1.02, y: -8 }}
-              className="clay-card clay-float p-8 cursor-default"
+              key={study.industry}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="group bg-white border-[4px] border-black p-10 flex flex-col h-full hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] transition-all"
             >
-              <Quote className="h-8 w-8 text-white/10 mb-4" />
-              <p className="text-white leading-relaxed mb-6">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div className="flex items-center gap-4">
-                <div className={`flex h-12 w-12 items-center justify-center rounded-full ${t.color} text-sm font-bold text-white`}>
-                  {t.avatar}
+              <div className="mb-8 flex items-center justify-between">
+                <div className="h-14 w-14 bg-black flex items-center justify-center">
+                  <study.icon className="h-7 w-7 text-white" aria-hidden="true" />
                 </div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-black/20">CASE_{i + 1}</span>
+              </div>
+
+              <div className="space-y-6 flex-grow">
                 <div>
-                  <p className="font-bold text-white text-sm">{t.name}</p>
-                  <p className="text-xs text-white/40">{t.role}</p>
+                  <h3 className="text-[10px] font-black uppercase tracking-widest text-black/40 mb-1">Industry</h3>
+                  <p className="text-xl font-black uppercase tracking-tighter">{study.industry}</p>
                 </div>
-                <div className="ml-auto flex gap-0.5">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="h-3.5 w-3.5 fill-white text-white" />
-                  ))}
+
+                <div>
+                  <h3 className="text-[10px] font-black uppercase tracking-widest text-black/40 mb-1">Challenge</h3>
+                  <p className="text-sm font-medium leading-relaxed">{study.challenge}</p>
                 </div>
+
+                <div>
+                  <h3 className="text-[10px] font-black uppercase tracking-widest text-black/40 mb-1">Approach</h3>
+                  <p className="text-sm font-medium leading-relaxed">{study.approach}</p>
+                </div>
+              </div>
+
+              <div className="mt-10 pt-8 border-t-[3px] border-black/5">
+                <h3 className="text-[10px] font-black uppercase tracking-widest text-black/40 mb-1">Impact</h3>
+                <p className="text-lg font-black text-black">{study.impact}</p>
               </div>
             </motion.div>
           ))}

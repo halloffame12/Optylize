@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, MapPin, Phone, Clock, ArrowRight, Send, Loader2 } from 'lucide-react'
+import { Mail, MapPin, Phone, Clock, ArrowRight, Send, Loader2, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -27,9 +27,9 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>
 
 const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'hello@optylize.com', href: 'mailto:hello@optylize.com' },
-    { icon: Phone, label: 'Phone', value: '+1 (415) 555-0192', href: 'tel:+14155550192' },
-    { icon: MapPin, label: 'Location', value: 'San Francisco, CA', href: null },
+    { icon: Mail, label: 'Email', value: 'contact@optylize.com', href: 'mailto:contact@optylize.com' },
+    { icon: MapPin, label: 'Location', value: 'Noida, India', href: null },
+    { icon: Users, label: 'Founding Team', value: 'Alex Rivera, Priya Sharma, Rohan Singh', href: null },
     { icon: Clock, label: 'Response Time', value: 'Within 24 hours', href: null },
 ]
 
@@ -48,7 +48,7 @@ export default function ContactContent() {
         await new Promise(resolve => setTimeout(resolve, 1500))
         setIsSubmitting(false)
         reset()
-        alert("Message sent! We'll get back to you shortly.")
+        alert("Strategic Audit Request Received. Our team (contact@optylize.com) will reach out within 24 hours to confirm your consultation.")
     }
 
     return (
@@ -124,7 +124,7 @@ export default function ContactContent() {
                                 <div className="h-full w-full bg-black flex items-center justify-center">
                                     <div className="text-center">
                                         <MapPin className="h-10 w-10 text-white/60 mx-auto mb-3" />
-                                        <p className="text-sm font-bold uppercase tracking-wider text-white/40">SAN FRANCISCO, CA</p>
+                                        <p className="text-sm font-bold uppercase tracking-wider text-white/40">NOIDA, INDIA</p>
                                     </div>
                                 </div>
                             </div>

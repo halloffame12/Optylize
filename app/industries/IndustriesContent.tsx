@@ -3,61 +3,87 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import {
-    Building2, HeartPulse, Landmark, ShoppingCart, Factory, Truck,
-    Shield, TrendingUp, CheckCircle2
+    ShoppingCart, Factory, Building2, Shield,
+    Landmark, Globe, Zap, HeartPulse, ArrowRight
 } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 const industries = [
     {
-        icon: Landmark,
-        name: 'Financial Services',
-        desc: 'Risk modeling, fraud detection, automated compliance, and intelligent document processing for banks, insurers, and fintechs.',
-        metrics: ['60% faster claim processing', '99.2% fraud detection rate', 'SOC 2 + PCI compliant'],
-        color: 'border-white/10',
-        iconColor: 'text-white',
-    },
-    {
-        icon: HeartPulse,
-        name: 'Healthcare',
-        desc: 'Clinical decision support, patient engagement AI, medical document analysis, and HIPAA-compliant data pipelines.',
-        metrics: ['40% reduction in admin time', 'HIPAA compliant', '10x faster medical coding'],
-        color: 'border-white/10',
-        iconColor: 'text-white',
-    },
-    {
+        name: 'Ecommerce',
         icon: ShoppingCart,
-        name: 'Retail & Ecommerce',
-        desc: 'Personalization engines, demand forecasting, dynamic pricing, and AI-powered customer experience optimization.',
-        metrics: ['34% more conversions', '28% higher AOV', 'Real-time personalization'],
-        color: 'border-white/10',
-        iconColor: 'text-white',
+        desc: 'Addressing fragmented data and conversion leakages through agentic automation.',
+        challenge: 'Low operational efficiency and fragmented data systems.',
+        approach: 'Implemented structured AI strategy, KPI mapping, predictive analytics layer.',
+        impact: '40% ROI improvement and 2x faster decision cycles.',
+        metrics: ['40% ROI', '12+ Deployments', 'Custom Agentic Workflows']
     },
     {
+        name: 'Manufacturing & Metals',
         icon: Factory,
-        name: 'Manufacturing',
-        desc: 'Predictive maintenance, quality control AI, supply chain optimization, and intelligent process automation.',
-        metrics: ['45% fewer defects', '30% less downtime', 'Real-time quality monitoring'],
-        color: 'border-white/10',
-        iconColor: 'text-white',
+        desc: 'Optimizing supply chains and predictive maintenance for global industrial leaders.',
+        challenge: 'Manual forecasting and inventory misalignment.',
+        approach: 'Built AI-driven demand prediction system integrated with ERP.',
+        impact: 'Reduced waste by 28%, improved planning accuracy by 35%.',
+        metrics: ['2x Efficiency', 'Reduced Downtime', 'Predictive Supply Chain']
     },
     {
-        icon: Truck,
-        name: 'Logistics',
-        desc: 'Route optimization, warehouse automation, fleet intelligence, and predictive demand analysis.',
-        metrics: ['28% cost reduction', '15% faster delivery', 'Autonomous dispatching'],
-        color: 'border-white/10',
-        iconColor: 'text-white',
-    },
-    {
+        name: 'SaaS & Services',
         icon: Building2,
-        name: 'Enterprise SaaS',
-        desc: 'AI feature embedding, intelligent automation, platform scalability, and user behavior prediction.',
-        metrics: ['3x faster feature delivery', '50% support deflection', 'AI-native architecture'],
-        color: 'border-white/10',
-        iconColor: 'text-white',
+        desc: 'Embedding AI into platform workflows to accelerate developer productivity and customer success.',
+        challenge: 'Poor customer segmentation and conversion leakages.',
+        approach: 'Deployed agentic analytics workflows and automation systems.',
+        impact: 'Increased retention by 22% and reduced churn within 6 weeks.',
+        metrics: ['AI-Native features', '6-Week Turnaround', 'Scalable Agents']
     },
+    {
+        name: 'Cyber Security',
+        icon: Shield,
+        desc: 'Leveraging GenAI for threat detection and automated incident response scripts.',
+        challenge: 'Evolving threat landscapes and slow manual response times.',
+        approach: 'AI-driven security orchestration and automated threat hunting.',
+        impact: 'Reduced mean time to response (MTTR) by 60%.',
+        metrics: ['Real-time Analysis', 'Automated Remediation', 'Zero-Trust AI']
+    },
+    {
+        name: 'Ed-Tech',
+        icon: Landmark,
+        desc: 'Transforming learner outcomes with personalized AI tutors and automated grading systems.',
+        challenge: 'Inconsistent learning paths and high teacher workload.',
+        approach: 'LLM-powered tutoring agents and automated feedback loops.',
+        impact: '30% increase in student engagement scores.',
+        metrics: ['Personalized Learning', 'Adaptive Curriculum', 'AI Tutors']
+    },
+    {
+        name: 'Public Sector',
+        icon: Globe,
+        desc: 'Structured AI adoption for public services, focusing on efficiency and citizen engagement.',
+        challenge: 'Legacy bureaucratic processes and data silos.',
+        approach: 'Compliant AI integration for document processing and public interaction.',
+        impact: 'Improved service delivery speed by 45%.',
+        metrics: ['Process Automation', 'Regulated Compliance', 'Citizen-First AI']
+    },
+    {
+        name: 'Energy Sector',
+        icon: Zap,
+        desc: 'Smart grid management and predictive modeling for renewable energy production.',
+        challenge: 'Unpredictable renewable yields and grid instability.',
+        approach: 'Machine learning for demand response and grid optimization.',
+        impact: '15% reduction in grid management overhead.',
+        metrics: ['Grid Optimization', 'Predictive Modeling', 'Sustainability AI']
+    },
+    {
+        name: 'Hospitality',
+        icon: HeartPulse,
+        desc: 'Enhancing guest experiences through hyper-personalized concierge agents and optimized booking.',
+        challenge: 'Fragmented guest data and high volume of inquiries.',
+        approach: 'Voice and chat AI for handling booking and guest services.',
+        impact: 'Reduced booking drop-offs by 25%.',
+        metrics: ['Guest GenAI', 'Automated Bookings', 'Personalized Stay']
+    }
 ]
 
 export default function IndustriesContent() {
@@ -69,8 +95,7 @@ export default function IndustriesContent() {
             <Navbar />
 
             {/* Hero */}
-            <section className="relative pt-32 pb-20">
-                <div className="absolute inset-0 bg-gradient-to-br from-brutal-yellow/5 via-background to-brutal-cyan/5" />
+            <section className="relative pt-32 pb-20 overflow-hidden bg-background">
                 <div className="noise-overlay" />
                 <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <motion.div
@@ -78,77 +103,72 @@ export default function IndustriesContent() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-black/40">
-                            INDUSTRY VERTICALS
+                        <p className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-black/40">
+                            STRATEGIC VERTICALS
                         </p>
-                        <h1 className="text-4xl font-extrabold uppercase tracking-tight sm:text-5xl md:text-display-xl">
-                            <span className="text-foreground">GENAI FOR </span>
-                            <span className="text-black/60">EVERY </span>
-                            <span className="text-foreground">SECTOR</span>
+                        <h1 className="text-4xl font-extrabold uppercase tracking-tight sm:text-5xl md:text-display-xl lg:max-w-4xl">
+                            INDUSTRIES WE <span className="text-black/40 italic">TRANSFORM</span>
                         </h1>
-                        <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-                            Vertical-ready frameworks designed for regulated industries with
-                            compliance-first architecture and domain-specific expertise.
+                        <p className="mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+                            We focus on industries where AI can drive measurable, high-impact business outcomes. Our boutique approach ensures vertical-specific expertise in every engagement.
                         </p>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Industry Grid */}
-            <section ref={ref} className="relative py-20">
-                <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                        {industries.map((ind, i) => {
-                            const Icon = ind.icon
-                            return (
-                                <motion.div
-                                    key={ind.name}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                    transition={{ duration: 0.5, delay: i * 0.08 }}
-                                    className={`group clay-card clay-float p-8 border ${ind.color} cursor-pointer`}
-                                >
-                                    <Icon className={`h-12 w-12 ${ind.iconColor} mb-6 transition-transform group-hover:scale-110`} />
-                                    <h3 className="text-xl font-bold text-white mb-3 uppercase tracking-wide">
-                                        {ind.name}
-                                    </h3>
-                                    <p className="text-sm text-white/60 leading-relaxed mb-6">{ind.desc}</p>
-
-                                    {/* Metrics */}
-                                    <div className="space-y-2 pt-4 border-t border-white/10">
-                                        {ind.metrics.map((metric) => (
-                                            <div key={metric} className="flex items-center gap-2 text-xs">
-                                                <CheckCircle2 className={`h-3.5 w-3.5 ${ind.iconColor} shrink-0`} />
-                                                <span className="text-white/40">{metric}</span>
-                                            </div>
-                                        ))}
+            {/* Grid */}
+            <section ref={ref} className="py-20">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div className="grid gap-12 md:grid-cols-2">
+                        {industries.map((industry, i) => (
+                            <motion.div
+                                key={industry.name}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                transition={{ duration: 0.5, delay: i * 0.1 }}
+                                className="brutal-card bg-card p-10 h-full flex flex-col hover:bg-black hover:text-white transition-all duration-300"
+                            >
+                                <div className="flex items-start justify-between mb-8">
+                                    <div className="p-4 bg-black/5 group-hover:bg-white/10 border-2 border-black">
+                                        <industry.icon className="h-8 w-8 text-black" aria-hidden="true" />
                                     </div>
-                                </motion.div>
-                            )
-                        })}
+                                </div>
+                                <h2 className="text-2xl font-black uppercase mb-4 tracking-tighter">
+                                    {industry.name}
+                                </h2>
+                                <p className="text-base text-muted-foreground leading-relaxed mb-8 flex-grow">
+                                    {industry.desc}
+                                </p>
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-black/5">
+                                    {industry.metrics.map(metric => (
+                                        <div key={metric} className="flex items-center gap-2">
+                                            <div className="h-1 w-1 rounded-full bg-black/20" />
+                                            <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">
+                                                {metric}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Compliance Bar */}
-            <section className="relative py-16 bg-card/50 border-y border-border">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-8">
-                        <p className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground">
-                            COMPLIANCE & SECURITY
-                        </p>
-                    </div>
-                    <div className="flex flex-wrap items-center justify-center gap-8">
-                        {['SOC 2', 'HIPAA', 'GDPR', 'PCI DSS', 'ISO 27001'].map((badge) => (
-                            <div
-                                key={badge}
-                                className="brutal-card bg-black text-white px-6 py-3 text-xs font-bold uppercase tracking-wider border-black shadow-brutal"
-                            >
-                                <Shield className="inline h-4 w-4 mr-2" />
-                                {badge}
-                            </div>
-                        ))}
-                    </div>
+            {/* Final CTA */}
+            <section className="py-24 bg-black text-white text-center">
+                <div className="max-w-4xl mx-auto px-4">
+                    <h2 className="text-3xl font-extrabold uppercase mb-8 leading-tight">
+                        NOT SURE IF YOUR INDUSTRY IS READY?
+                    </h2>
+                    <p className="text-white/60 text-lg mb-12 max-w-2xl mx-auto">
+                        Book a Free Strategic Audit Consultation Call and let's map out your organizational roadmap.
+                    </p>
+                    <Link href="/contact">
+                        <Button size="xl" className="bg-white text-black hover:bg-white/90 font-black px-12 h-20 rounded-none text-lg">
+                            BOOK A STRATEGIC AUDIT
+                        </Button>
+                    </Link>
                 </div>
             </section>
 
