@@ -144,7 +144,7 @@ export default function InsightsContent() {
                                         </p>
                                         <div className="flex items-center justify-between text-xs text-white/40">
                                             <span className="flex items-center gap-1">
-                                                <Clock className="h-3 w-3" aria-hidden="true" /> {article.readTime}
+                                                <Clock className="h-3 w-3" /> {article.readTime}
                                             </span>
                                             <span>{article.date}</span>
                                         </div>
@@ -159,7 +159,7 @@ export default function InsightsContent() {
             {/* Newsletter */}
             <section className="relative py-20 bg-card/50 border-t border-border">
                 <div className="relative mx-auto max-w-xl px-4 sm:px-6 lg:px-8 text-center">
-                    <Mail className="h-10 w-10 text-black/60 mx-auto mb-4" aria-hidden="true" />
+                    <Mail className="h-10 w-10 text-black/60 mx-auto mb-4" />
                     <h2 className="text-2xl font-extrabold uppercase tracking-tight">
                         STAY IN THE LOOP
                     </h2>
@@ -170,7 +170,6 @@ export default function InsightsContent() {
                         <Input
                             placeholder="your@email.com"
                             className="skeu-input flex-1"
-                            aria-label="Email address for newsletter"
                         />
                         <Button className="shrink-0 bg-black text-white border-black hover:bg-black/90 brutal-btn">
                             SUBSCRIBE

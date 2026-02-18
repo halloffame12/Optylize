@@ -12,7 +12,7 @@ export default function NotFound() {
                     404
                 </h1>
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-12 transform bg-black px-4 py-2 text-2xl font-bold uppercase text-white shadow-brutal border-2 border-black sm:text-4xl">
-                    OPTYLIZE: Page Not Found
+                    Page Not Found
                 </div>
             </div>
 

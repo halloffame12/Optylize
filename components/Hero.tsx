@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Play, Sparkles, Zap, Shield, Cpu, Activity, Globe, Database, Network } from 'lucide-react'
+import { ArrowRight, Play, Sparkles, Zap, Shield, Cpu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
@@ -10,209 +10,183 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any },
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any },
   },
+}
+
+const floatingVariants = {
+  animate: {
+    y: [0, -15, 0],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut" as any
+    }
+  }
 }
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen pt-[160px] pb-24 overflow-hidden bg-[#FBFBFC] flex items-center">
-      {/* Background Layer - Ultra Professional */}
+    <section className="relative min-h-[100dvh] pt-32 pb-20 overflow-hidden bg-[#F5F5F7] flex items-center">
+      {/* Abstract background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-15%] left-[-5%] w-[60%] h-[80%] bg-black/[0.012] blur-[160px] rounded-full" />
-        <div className="absolute inset-0 [background-image:radial-gradient(#00000004_1px,transparent_1px)] [background-size:48px_48px]" />
-        <div className="noise-overlay opacity-[0.008]" />
+        <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[60%] bg-black/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[60%] bg-black/5 blur-[120px] rounded-full" />
+        <div className="noise-overlay opacity-[0.02]" />
       </div>
 
-      <div className="relative mx-auto max-w-[1920px] px-8 lg:px-16 xl:px-24 w-full z-10">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid gap-16 lg:grid-cols-[1.2fr_0.8fr] lg:gap-24 items-center"
+          className="grid gap-16 lg:grid-cols-2 lg:gap-8 items-center"
         >
-          {/* Left Column: Focused Text Content */}
-          <div className="max-w-4xl space-y-10">
+          {/* Text Content */}
+          <div className="max-w-2xl">
             <motion.div variants={itemVariants}>
-              <Badge variant="outline" className="px-5 py-2 border-black/5 bg-white shadow-sm text-black/40 gap-3 font-black tracking-[0.3em] uppercase text-[8px] rounded-full">
-                <div className="h-1 w-1 rounded-full bg-black/30 animate-pulse" />
-                STRATEGIC GENAI SYSTEMS
+              <Badge variant="outline" className="mb-6 px-4 py-1.5 border-black/10 bg-white/50 backdrop-blur-sm text-black/60 gap-2 font-medium tracking-wide">
+                <Sparkles className="h-3.5 w-3.5 text-black" />
+                ADVANCED GENAI ARCHITECTURE
               </Badge>
             </motion.div>
 
             <motion.h1
               variants={itemVariants}
-              className="text-4xl font-[950] leading-[0.85] tracking-[-0.05em] text-black sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.5rem] uppercase"
+              className="text-5xl font-extrabold leading-[1.05] tracking-tight text-black sm:text-6xl md:text-7xl xl:text-8xl"
             >
-              REIMAGINING <br />
-              TRANSFORMATIONS <br />
-              <span className="text-black/30 italic font-black">WITH AI</span> <br />
-              STRATEGY
+              ENGINEERING <br />
+              <span className="text-black/40">INTELLIGENT</span> <br />
+              OUTCOMES.
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="text-lg md:text-xl text-black/40 leading-[1.6] font-medium max-w-lg tracking-tight"
+              className="mt-8 text-lg md:text-xl text-black/60 leading-relaxed font-medium"
             >
-              Optylize helps growth-stage companies move from GenAI strategy to production outcomes with hands-on execution, secure architecture, and measurable business value.
+              Optylize is a boutique GenAI engineering firm for growth-stage enterprises. We ship production-grade AI systems that deliver measurable business value.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-6 sm:flex-row pt-6">
+            <motion.div variants={itemVariants} className="mt-10 flex flex-col gap-5 sm:flex-row">
               <Link href="/contact" className="w-full sm:w-auto">
-                <Button size="xl" className="w-full sm:w-auto bg-black text-white hover:opacity-90 gap-4 text-[10px] h-16 px-12 rounded-none font-black uppercase tracking-[0.2em] shadow-[10px_10px_0px_0px_rgba(0,0,0,0.1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
-                  BOOK A STRATEGIC CONSULTATION
-                  <ArrowRight className="h-4 w-4" />
+                <Button size="xl" className="w-full sm:w-auto brutal-btn bg-black text-white hover:bg-black/90 gap-3 text-base h-16 px-8">
+                  Book a Consultation
+                  <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/contact" className="w-full sm:w-auto">
-                <Button variant="outline" size="xl" className="w-full sm:w-auto h-16 px-12 border-[3px] border-black bg-transparent text-black font-black uppercase tracking-[0.2em] hover:bg-black/5 rounded-none text-[10px] transition-all">
-                  GET A FREE AI AUDIT
+              <Link href="/services" className="w-full sm:w-auto">
+                <Button variant="outline" size="xl" className="w-full sm:w-auto h-16 px-8 border-[3px] border-black bg-transparent text-black font-bold uppercase tracking-wider hover:bg-black/5 gap-3">
+                  Our Services
                 </Button>
               </Link>
             </motion.div>
+
+            {/* Trusted By / Feature tags */}
+            <motion.div variants={itemVariants} className="mt-12 pt-12 border-t border-black/5 flex flex-wrap gap-8 items-center text-black/40">
+              <div className="flex items-center gap-2">
+                <Shield className="h-5 w-5" />
+                <span className="text-xs font-bold uppercase tracking-widest">SOC 2 TYPE II</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Cpu className="h-5 w-5" />
+                <span className="text-xs font-bold uppercase tracking-widest">PROPRIETARY LLM OPS</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="h-5 w-5" />
+                <span className="text-xs font-bold uppercase tracking-widest">99.9% RELIABILITY</span>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Right Column: Balanced Visual Column */}
+          {/* Video Section / Advanced Visual */}
           <motion.div
             variants={itemVariants}
-            className="relative lg:h-[700px] flex items-center justify-center lg:justify-end"
+            className="relative lg:h-[600px] flex items-center justify-center"
           >
-            <div className="relative w-full max-w-[540px] h-full flex items-center">
-              {/* Main Visual Container - Refined Shadows and Corners */}
-              <div className="relative w-full aspect-square md:aspect-auto md:h-[480px] rounded-[2rem] border-[4px] border-black overflow-hidden bg-white shadow-[24px_24px_0px_0px_rgba(0,0,0,1)] flex flex-col">
-                {/* Tech Header Detail */}
-                <div className="h-12 border-b-[3px] border-black flex items-center px-6 justify-between bg-white z-10">
-                  <div className="flex gap-1.5">
-                    <div className="h-1.5 w-1.5 rounded-full bg-black/5" />
-                    <div className="h-1.5 w-1.5 rounded-full bg-black/5" />
-                    <div className="h-1.5 w-1.5 rounded-full bg-black/5" />
-                  </div>
-                  <span className="text-[6px] font-black uppercase tracking-[0.6em] text-black/15">SYSTEM_ORCHESTRATOR // ALPHA_V1</span>
-                </div>
+            {/* Main Video Container */}
+            <motion.div
+              variants={floatingVariants}
+              animate="animate"
+              className="relative w-full aspect-video lg:aspect-square max-w-[500px] group"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-tr from-black/10 via-white to-black/5 blur-2xl opacity-20 rounded-3xl" />
 
-                {/* Content Area: AI Grid / Nodes */}
-                <div className="flex-1 relative bg-[#FCFCFD] overflow-hidden p-6">
-                  {/* Internal Grid */}
-                  <div className="absolute inset-0 [background-image:linear-gradient(to_right,#00000002_1px,transparent_1px),linear-gradient(to_bottom,#00000002_1px,transparent_1px)] [background-size:24px_24px]" />
+              <div className="relative w-full h-full rounded-2xl border-[3px] border-black overflow-hidden shadow-[20px_20px_0px_0px_rgba(0,0,0,1)] bg-white leading-[0]">
+                {/* Placeholder Video - Replaced with a real aesthetic video link */}
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover scale-105"
+                >
+                  <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-form-of-blue-and-white-smoke-25337-large.mp4" type="video/mp4" />
+                </video>
 
-                  {/* Sophisticated UI Elements */}
-                  <div className="relative h-full w-full flex flex-col gap-4">
-                    {/* Top Stats */}
-                    <div className="flex gap-4">
-                      <div className="flex-1 brutal-card bg-white p-4 border-[3px] border-black flex items-center justify-between">
-                        <div className="flex flex-col">
-                          <span className="text-[8px] font-black text-black/20 uppercase tracking-widest">Efficiency</span>
-                          <span className="text-base font-black tracking-tighter">98.4 GB/S</span>
-                        </div>
-                        <Activity className="h-5 w-5 text-black/10" />
-                      </div>
-                      <div className="h-14 w-14 brutal-card bg-black border-[3px] border-black flex items-center justify-center shrink-0">
-                        <Globe className="h-5 w-5 text-white animate-spin-slow" />
-                      </div>
+                {/* Overlay details */}
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
+
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="clay-card-pastel bg-white/40 backdrop-blur-xl p-4 flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-black flex items-center justify-center">
+                      <Play className="h-5 w-5 text-white fill-white ml-1" />
                     </div>
-
-                    {/* Middle Dashboard */}
-                    <div className="flex-1 brutal-card bg-white/40 border-[3px] border-black backdrop-blur-sm relative overflow-hidden flex flex-col p-5">
-                      <div className="flex items-center justify-between mb-auto">
-                        <div className="flex items-center gap-2">
-                          <div className="h-2 w-2 rounded-full bg-black" />
-                          <span className="text-[8px] font-black uppercase tracking-[0.2em]">Neural Engine</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <div className="h-1 w-1 rounded-full bg-green-500 animate-pulse" />
-                          <span className="text-[6px] font-black text-black/20 tracking-wider">ACTIVE</span>
-                        </div>
-                      </div>
-
-                      {/* AI abstraction */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-[0.02]">
-                        <Network className="h-40 w-40" />
-                      </div>
-
-                      <div className="mt-auto flex flex-col gap-2">
-                        <div className="h-1 w-full bg-black/5 rounded-full overflow-hidden">
-                          <motion.div
-                            className="h-full bg-black"
-                            initial={{ width: "30%" }}
-                            animate={{ width: "90%" }}
-                            transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-                          />
-                        </div>
-                        <div className="flex justify-between items-baseline">
-                          <span className="text-[6px] font-black text-black/20 uppercase tracking-widest">System Load</span>
-                          <span className="text-[9px] font-black text-black">90.2%</span>
-                        </div>
-                      </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-black/40">Watch Our Approach</p>
+                      <p className="text-sm font-bold text-black">Technical Deep Dive</p>
                     </div>
-
-                    {/* Bottom Log Stream */}
-                    <div className="h-16 bg-black p-3 font-mono text-[7px] text-white/20 overflow-hidden rounded-xl leading-relaxed whitespace-nowrap">
-                      <p>{'>'} AUTH_KEY VALIDATED // SECURE_HANDSHAKE</p>
-                      <p className="opacity-60">{'>'} MAPPING_VECTOR_SPACE_EXECUTION...</p>
-                      <p className="opacity-30">{'>'} NODE_SYNC_COMPLETE // STATUS: OK</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Interactive Area */}
-                <div className="h-16 bg-white border-t-[3px] border-black flex items-center px-6 gap-4">
-                  <div className="h-8 w-8 rounded-full bg-black flex items-center justify-center group cursor-pointer hover:scale-110 transition-transform shadow-md">
-                    <Play className="h-3 w-3 text-white fill-white ml-0.5" />
-                  </div>
-                  <div>
-                    <p className="text-[8px] font-black uppercase tracking-[0.2em] text-black">Case Study Demo</p>
-                    <p className="text-[6px] font-bold text-black/30 uppercase tracking-widest">Automation Flow // 03:15</p>
                   </div>
                 </div>
               </div>
 
-              {/* Refined Floating Badges - Absolute Positioning to prevent overlap */}
+              {/* Floating elements for "Advanced" look */}
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute -top-4 right-0 lg:-right-8 bg-black p-4 border-[3px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.15)] z-20 w-40"
+                className="absolute -top-10 -right-10 brutal-card bg-black p-4 hidden md:block"
+                animate={{ rotate: [0, 5, 0] }}
+                transition={{ duration: 5, repeat: Infinity }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 bg-white/10 rounded-lg">
-                    <Database className="h-4 w-4 text-white" />
+                  <div className="h-10 w-10 rounded-lg bg-white/10 flex items-center justify-center">
+                    <Cpu className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-[7px] font-bold text-white/30 uppercase tracking-[0.2em] mb-0.5">DB Sync</p>
-                    <p className="text-xs font-black text-white tracking-widest">SECURE</p>
+                    <p className="text-xs font-bold text-white/60">System Health</p>
+                    <p className="text-lg font-black text-white">OPTIMIZED</p>
                   </div>
                 </div>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1, duration: 0.6 }}
-                className="absolute -bottom-8 left-0 lg:-left-8 bg-white p-4 border-[3px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.15)] z-20 w-40"
+                className="absolute -bottom-10 -left-10 brutal-card bg-white p-4 hidden md:block border-black"
+                animate={{ rotate: [0, -5, 0] }}
+                transition={{ duration: 6, repeat: Infinity }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 bg-black/5 rounded-lg">
-                    <Zap className="h-4 w-4 text-black" />
+                  <div className="h-10 w-10 rounded-full bg-black/5 flex items-center justify-center">
+                    <Zap className="h-6 w-6 text-black" />
                   </div>
                   <div>
-                    <p className="text-[7px] font-bold text-black/30 uppercase tracking-[0.2em] mb-0.5">Uptime</p>
-                    <p className="text-xs font-black text-black tracking-widest">99.9%</p>
+                    <p className="text-xs font-bold text-black/60">Efficiency Gain</p>
+                    <p className="text-lg font-black text-black">+140%</p>
                   </div>
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Background visual detail */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
     </section>
   )
 }

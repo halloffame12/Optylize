@@ -8,8 +8,8 @@ const stats = [
     { icon: TrendingUp, value: 40, suffix: '%', label: 'Average ROI', color: 'text-black' },
     { icon: Zap, value: 12, suffix: '+', label: 'Agentic Deployments', color: 'text-black' },
     { icon: Globe, value: 4, suffix: '+', label: 'Industries Served', color: 'text-black' },
-    { icon: Users, value: 6, suffix: ' WKS', label: 'Turnaround', color: 'text-black', subLabel: '4-6 Weeks' },
-    { icon: Award, value: 2, suffix: 'x', label: 'Faster Than Traditional Firms', color: 'text-black' },
+    { icon: Award, value: 2, suffix: 'x', label: 'Faster Than Firms', color: 'text-black' },
+    { icon: Users, value: 6, suffix: ' WKS', label: 'Avg Turnaround', color: 'text-black', subLabel: '4-6 Weeks' },
 ]
 
 function Counter({ value, suffix, inView }: { value: number; suffix: string; inView: boolean }) {
@@ -59,7 +59,7 @@ export default function StatsCounter() {
                                 className="brutal-card bg-card p-6 text-center"
                             >
                                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center border-[3px] border-current bg-card">
-                                    <Icon className={`h-5 w-5 ${stat.color}`} aria-hidden="true" />
+                                    <Icon className={`h-5 w-5 ${stat.color}`} />
                                 </div>
                                 <div className={`text-3xl font-extrabold ${stat.color}`}>
                                     {stat.label === 'Avg Turnaround' ? (

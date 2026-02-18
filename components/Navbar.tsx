@@ -14,7 +14,7 @@ const navLinks = [
   { href: '/about', label: 'About' },
   {
     label: 'Capabilities',
-    href: '/capabilities',
+    href: '/services',
     subLinks: [
       { href: '/product-library', label: 'Product Library' },
       { href: '/agent-store', label: 'Agent Store' },
@@ -57,24 +57,23 @@ export default function Navbar() {
       animate={hidden ? 'hidden' : 'visible'}
       transition={{ duration: 0.35, ease: 'easeInOut' }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+        'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
         scrolled
-          ? 'bg-[#FDFDFD]/90 backdrop-blur-xl border-b border-black/5 py-4'
-          : 'bg-transparent py-6'
+          ? 'bg-background/95 backdrop-blur-md border-b-[3px] border-black'
+          : 'bg-transparent'
       )}
     >
-      <div className="mx-auto max-w-[1920px] px-6 lg:px-12 xl:px-20">
-        <div className="flex h-16 items-center justify-between">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-3" aria-label="Optylize Home">
-            <div className="flex h-10 w-10 items-center justify-center bg-black border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]">
-              <Zap className="h-5 w-5 text-white" aria-hidden="true" />
+          <Link href="/" className="group flex items-center gap-2">
+            <div className="flex h-10 w-10 items-center justify-center bg-black border-[3px] border-black shadow-brutal">
+              <Zap className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-black tracking-tighter text-black">
-              OPTYLIZE
+            <span className="text-xl font-extrabold tracking-tight text-foreground">
+              Opty<span className="text-black">lize</span>
             </span>
           </Link>
-
 
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-1">
@@ -93,19 +92,19 @@ export default function Navbar() {
                   <Link
                     href={link.href || '#'}
                     className={cn(
-                      'relative flex items-center gap-1 px-4 py-2 text-xs font-black uppercase tracking-widest transition-all duration-200',
+                      'relative flex items-center gap-1 px-4 py-2 text-sm font-bold tracking-wider transition-all duration-200',
                       isActive
                         ? 'text-black'
-                        : 'text-black/40 hover:text-black'
+                        : 'text-muted-foreground hover:text-foreground'
                     )}
                   >
                     {link.label}
-                    {link.subLinks && <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" aria-hidden="true" />}
+                    {link.subLinks && <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />}
                     {isActive && (
                       <motion.div
                         layoutId="nav-indicator"
-                        className="absolute bottom-[-4px] left-4 right-4 h-1 bg-black"
-                        transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+                        className="absolute bottom-0 left-2 right-2 h-[3px] bg-black"
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                       />
                     )}
                   </Link>
@@ -125,8 +124,8 @@ export default function Navbar() {
                               key={sub.href}
                               href={sub.href}
                               className={cn(
-                                'flex items-center gap-2 px-4 py-2.5 text-[10px] font-black uppercase tracking-wider transition-colors hover:bg-black/5',
-                                pathname === sub.href ? 'text-black' : 'text-black/40'
+                                'flex items-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors hover:bg-black/5',
+                                pathname === sub.href ? 'text-black' : 'text-muted-foreground'
                               )}
                             >
                               {sub.label}
@@ -144,8 +143,8 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <Link href="/contact">
-              <Button size="lg" className="gap-3 bg-black text-white hover:bg-black/90 rounded-none h-11 px-8 font-black uppercase tracking-widest text-xs">
-                BOOK A STRATEGIC CONSULTATION
+              <Button variant="brutal" size="lg" className="gap-2 bg-black text-white hover:bg-black/90">
+                Get Started
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -154,14 +153,14 @@ export default function Navbar() {
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon" className="text-foreground" aria-label="Open Menu">
+              <Button variant="ghost" size="icon" className="text-foreground">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full sm:max-w-md bg-background border-l-[3px] border-black">
               <SheetHeader>
-                <SheetTitle className="text-left font-extrabold tracking-tighter">
-                  OPTY<span className="text-black">LIZE</span>
+                <SheetTitle className="text-left font-extrabold tracking-tight">
+                  Opty<span className="text-black">lize</span>
                 </SheetTitle>
                 <div className="sr-only">
                   <SheetDescription>
@@ -215,8 +214,8 @@ export default function Navbar() {
                 })}
                 <div className="mt-6 px-4">
                   <Link href="/contact" onClick={() => setIsOpen(false)}>
-                    <Button variant="brutal" size="xl" className="w-full gap-2 font-black uppercase tracking-widest text-xs">
-                      BOOK A STRATEGIC CONSULTATION
+                    <Button variant="brutal" size="xl" className="w-full gap-2">
+                      Get Started
                       <ArrowRight className="h-4 w-4" />
                     </Button>
                   </Link>

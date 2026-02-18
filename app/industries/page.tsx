@@ -1,9 +1,10 @@
-export const metadata = {
-    title: 'Industries | Optylize',
-    description: 'AI strategy for Ecommerce, Manufacturing, SaaS, and more. Transform your industry with boutique AI execution.',
-}
-
+import type { Metadata } from 'next'
 import IndustriesContent from './IndustriesContent'
+
+export const metadata: Metadata = {
+    title: 'Industries | Optylize',
+    description: 'AI solutions tailored for Finance, Healthcare, Manufacturing, and Retail.',
+}
 
 export default function IndustriesPage() {
     return <IndustriesContent />

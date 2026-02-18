@@ -14,7 +14,10 @@ import Link from 'next/link'
 const team = [
   { name: 'Alex Rivera', role: 'Co-Founder & CEO', initials: 'AR', color: 'bg-black/5' },
   { name: 'Priya Sharma', role: 'Co-Founder & CTO', initials: 'PS', color: 'bg-black/10' },
-  { name: 'Rohan Singh', role: 'Director of Strategic Execution', initials: 'RS', color: 'bg-black/5' },
+  { name: 'James Chen', role: 'Head of AI Engineering', initials: 'JC', color: 'bg-black/5' },
+  { name: 'Maria Santos', role: 'VP of Strategy', initials: 'MS', color: 'bg-black/10' },
+  { name: 'David Kim', role: 'Lead ML Engineer', initials: 'DK', color: 'bg-black/5' },
+  { name: "Sarah O'Brien", role: 'Head of Delivery', initials: 'SO', color: 'bg-black/10' },
 ]
 
 const values = [
@@ -45,7 +48,7 @@ export default function AboutPage() {
 
       {/* Hero */}
       <section className="relative pt-32 pb-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/5 via-background to-black/5" />
+        <div className="absolute inset-0 bg-gradient-to-br from-clay-purple/10 via-background to-clay-blue/10" />
         <div className="noise-overlay" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -53,17 +56,17 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-black/40">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-clay-purple">
               ABOUT OPTYLIZE
             </p>
             <h1 className="text-4xl font-extrabold uppercase tracking-tight sm:text-5xl md:text-display-xl">
-              <span className="text-foreground">STRATEGIC AI </span>
-              <span className="text-black italic">EXECUTION.</span> <br />
-              <span className="text-foreground">BEYOND CONSULTING.</span>
+              <span className="text-foreground">WE&apos;RE </span>
+              <span className="text-clay-purple">PRACTITIONERS</span>
+              <span className="text-foreground">, NOT CONSULTANTS</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg text-muted-foreground font-medium leading-[1.6]">
-              Optylize is a boutique team of senior practitioners and strategists who have shipped GenAI
-              at scale. We focus on business economics first, ensuring every deployment delivers tangible, measurable value.
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+              A boutique team of senior engineers and strategists who&apos;ve shipped GenAI
+              at scale. No juniors, no handoffs — just results.
             </p>
           </motion.div>
         </div>

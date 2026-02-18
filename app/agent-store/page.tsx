@@ -24,7 +24,7 @@ export default function AgentStorePage() {
                         className="text-center"
                     >
                         <div className="inline-flex items-center gap-2 bg-black/5 border-[2px] border-black px-4 py-1.5 mb-8">
-                            <ShoppingBag className="h-4 w-4 text-black" aria-hidden="true" />
+                            <ShoppingBag className="h-4 w-4 text-black" />
                             <span className="text-xs font-bold uppercase tracking-[0.2em] text-black">AGENT STORE</span>
                         </div>
                         <h1 className="text-5xl font-extrabold uppercase tracking-tight sm:text-6xl md:text-display-xl">
@@ -57,7 +57,7 @@ export default function AgentStorePage() {
                                 ].map((item, i) => (
                                     <div key={item.title} className="flex gap-4 items-start p-4 brutal-card bg-white">
                                         <div className="h-10 w-10 flex items-center justify-center bg-black/5 border-[2px] border-black shrink-0">
-                                            <item.icon className="h-5 w-5 text-black" aria-hidden="true" />
+                                            <item.icon className="h-5 w-5 text-black" />
                                         </div>
                                         <div>
                                             <h4 className="font-bold uppercase text-sm mb-1">{item.title}</h4>
@@ -76,8 +76,8 @@ export default function AgentStorePage() {
                                     Request an invite to join the early access program.
                                 </p>
                                 <Link href="/contact">
-                                    <Button size="xl" className="w-full brutal-btn bg-black text-white hover:bg-black/90 font-black uppercase tracking-widest text-xs h-16 rounded-none">
-                                        BOOK A STRATEGIC CONSULTATION
+                                    <Button size="xl" className="w-full brutal-btn bg-black text-white hover:bg-black/90">
+                                        Request Beta Invite
                                     </Button>
                                 </Link>
                             </div>
